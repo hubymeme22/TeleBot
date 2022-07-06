@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/template.css">
+	<link rel="stylesheet" href="css/bot-list.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<script src="js/request.js"></script>
+	<title>TeleBot Manager</title>
+</head>
+<body>
+
+	<header class="center">
+		<div class="header-holder">
+			<div class="header-element-wrapper">
+				<p class="header-title">TeleBot</p>
+			</div>
+
+			<div class="header-element-wrapper button-container">
+				<button class="header">Properties</button>
+				<button class="header header-selected">Bot List</button>
+				<button class="header">Export Bot</button>
+			</div>
+
+			<div class="header-element-wrapper-right">
+				<button class="header">About</button>
+				<button class="header">Contribute</button>
+			</div>
+
+		</div>
+	</header>
+	<main>
+		<h1 id="no-bot" class="center-text fade-in-upwards">Homie you got no bot/s :3</h1>
+		<div id="instance-container">
+			
+			<div class="pseudoContainer">
+				<div class="bot-instance expand-downwards">
+					<div class="grid-container fade-in">
+
+						<div class="grid1 center">
+							<div class="profile" id="profile"></div>
+						</div>
+
+						<div class="grid2">
+							<input class="token" id="token" type="text" placeholder="Enter Your bot token here to check...">
+							<button class="token-check" id="token-check">></button>
+						</div>
+
+						<div class="grid-empty"></div>
+
+						<div class="grid3">
+							Bot Status: <b id="bot-stats" class="text-grey">Offline</b>
+							<br/>
+							Bot Details:
+							<br/>
+							<div class="details-container">
+								Username: <b id="bot-user" class="text-grey">N/A</b>
+								<br/>
+								Can Join Groups: <b id="bot-can-join" class="text-grey">N/A</b>
+								<br/>
+								Can read all grp message: <b id="bot-can-read" class="text-grey">N/A</b>
+							</div>
+							<i class="material-icons delete" id="delete">delete</i>
+						</div>
+
+						<div class="grid-empty"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<br/><br/><br/>
+		<div class="max-width addbot-container center">
+			<button id="add-bot" class="add-bot">+</button>
+		</div>
+	</main>
+
+	<script src="js/bot-list.js"></script>
+</body>
+</html>

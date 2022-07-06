@@ -1,0 +1,66 @@
+.flex-box {
+	display: flex;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.content-justify {
+	justify-content: center;
+}
+
+.center-horizontal {
+	display: flex;
+	justify-content: center;
+}
+
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.max-width {
+	width: 100%;
+}
+
+.justify-text {
+	text-align: justify;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.weight-light {
+	font-weight: lighter;
+}
+
+.normalized-size {
+	font-size: 20px;
+}
+
+.clear-float {
+	clear: both;
+}
+
+.text-red {
+	color: red;
+}
+
+.text-green {
+	color: green;
+}
+
+.text-gray, .text-grey {
+	color: grey;
+}
+
+.text-yellow {
+	color: yellow;
+}
+
+.text-white {
+	color: white;
+}

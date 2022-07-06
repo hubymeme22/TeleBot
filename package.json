@@ -1,0 +1,15 @@
+{
+  "name": "telebot",
+  "version": "1.0.0",
+  "description": "A simple telegram bot maker with basic web app UI",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hubert F. Espinola I",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
+  }
+}

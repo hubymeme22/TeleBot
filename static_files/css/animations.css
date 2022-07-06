@@ -1,0 +1,33 @@
+.fade-in-upwards {
+	animation: fade-in-upwards 2s forwards;
+}
+
+.fade-in {
+	animation: fade-in 2s forwards;
+}
+
+.expand-downwards {
+	animation: expand-downwards 0.5s forwards;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes fade-in-upwards {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+@keyframes expand-downwards {
+	from { height: 0px; }
+	to { height: 300px; }
+}

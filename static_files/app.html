@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/template.css">
+	<title>TeleBot Manager</title>
+</head>
+<body>
+
+	<header class="center">
+		<div class="header-holder">
+			<div class="header-element-wrapper">
+				<p class="header-title">TeleBot</p>
+			</div>
+
+			<div class="header-element-wrapper button-container">
+				<button class="header header-selected">Properties</button>
+				<button class="header">Bot List</button>
+				<button class="header">Export Bot</button>
+			</div>
+
+			<div class="header-element-wrapper-right">
+				<button class="header">About</button>
+				<button class="header">Contribute</button>
+			</div>
+
+		</div>
+	</header>
+
+	<main>
+		<div class="contents-1">
+			<img class="bot-manager-bg fade-in-upwards" src="images/BotManager-BG.png">
+		</div>
+		<div class="contents-2 fade-in-upwards">
+			<h1>Bot Properties</h1>
+			<p class="justify-text weight-light normalized-size">
+				Select and add bot functionalities and properties by selecting available cards below. Can't find the functionality you want? Contact me on email@g.batstate-u.edu.ph!
+				<br/><br/>
+				Sharing is caring! got any ideas? contribute your ideas on contribute section learn more and collaborate with other developers! Bots are written in NodeJS
+			</p>
+		</div>
+
+		<br/>
+		<div class="max-width clear-float"></div>
+		<div class="max-width breaker"></div>
+		<h2 class="center fade-in-upwards proceed"><a href="#basics">Proceed</a></h2>
+
+		<div id="basics" class="max-width breaker"></div>
+		<div class="function-container">
+			<h1>Basic Functions</h1>
+			<p class="justify-text normalized-size">
+				This part contains basic bot functionalities such as echo, ban, schedule, and so on.
+				Simply select the card and choose which of the bots will receive the functionality.
+				To know what the command can do, right click the card to see description.
+			</p>
+
+			<div class="card-wrapper center"><button class="cards">/echo</button></div>
+			<div class="card-wrapper center"><button class="cards">/ping</button></div>
+			<div class="card-wrapper center"><button class="cards">/schedule</button></div>
+			<div class="card-wrapper center"><button class="cards">/ban</button></div>
+			<div class="max-width breaker"></div>
+		</div>
+
+		<div class="function-container">
+			<h1>Advanced Functions</h1>
+			<p class="justify-text normalized-size">
+				This part contains advanced bot functionalities like message logging, user monitoring, text-filter, and so on.
+				Right-click on the card to see the command's description.
+			</p>
+
+			<div class="card-wrapper center"><button class="cards cards-advanced">/msglog</button></div>
+			<div class="card-wrapper center"><button class="cards cards-advanced">/fltword</button></div>
+		</div>
+
+		<div id="basics" class="max-width breaker"></div>
+		<div class="function-container">
+			<h1>Contribution/s</h1>
+			<p class="justify-text normalized-size">
+				This part contains hybrid bot functionalities from our contributors! Feel free to use them!
+			</p>
+		</div>
+	</main>
+
+	<footer>Copyright © HueHueberry 2022</footer>
+	<script src="js/app.js"></script>
+</body>
+
+</html>

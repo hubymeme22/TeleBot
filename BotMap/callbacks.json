@@ -1,0 +1,4 @@
+{
+	"echo" : "./functionalities/echo.js",
+	"ban"  : "./functionalities/ban.js"
+}

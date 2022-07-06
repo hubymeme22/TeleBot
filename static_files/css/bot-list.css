@@ -1,0 +1,162 @@
+body {
+	background-color: #23508b;
+	background-image: none;
+}
+
+div.addbot-container {
+	border-top: 3px solid white;
+}
+
+div.bot-instance {
+	height: 300px;
+	width: 40%;
+
+	border-radius: 20px;
+	border: 3px solid rgb(255, 255, 255);
+	background-color: #102b4d;
+}
+
+div.grid-container {
+	display: grid;
+	grid-template-columns: 15% 80%;
+	grid-template-rows: auto auto;
+	border-radius: 15px;
+
+	height: auto;
+	width: 90%;
+	column-gap: 5%;
+	/* border: 1px solid green; */
+	margin-left: 5%;
+	margin-top: 5%;
+}
+
+div.grid1 {
+	/* border-radius: 50%; */
+	background-color: transparent;
+}
+
+div.grid2 {
+	height: 50px;
+	width: 100%;
+	/* background-color: white; */
+}
+
+div.grid3 {
+	height: 100%;
+	width: 100%;
+
+	/* background-color: green; */
+}
+
+div.grid-empty {
+	height: 100%; width: 100%;
+	/* background-color: black; */
+	border: 2px solid transparent;
+}
+
+div.details-container {
+	width: 70%; 
+	padding: 20px;
+	margin-top: 10px;
+	border-radius: 10px;
+	background-color: #461969;
+	display: inline-block;
+}
+
+
+div.delete-container {
+	display: inline-block;
+	height: 100%;
+}
+
+div.profile {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+div.pseudoContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	margin-top: 30px;
+}
+
+button.add-bot {
+	height: 50px;
+	width: 50px;
+	margin-top: -25px;
+	border: 3px solid white;
+	border-radius: 50%;
+	background-color: #23508b;
+	transition: 0.5s;
+}
+
+button.add-bot:hover {
+	height: 60px;
+	width: 60px;
+	margin-top: -30px;
+}
+
+button.checker {
+	margin-top: 10px;
+	height: 35px;
+	background-color: transparent;
+	border: 2px solid black;
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+span.profile {
+	display: inline-block;	
+	height: 50px; width: 50px;
+	/* background-color: rgb(30, 29, 29); */
+	border: 2px solid black;
+	border-radius: 50%;
+
+	margin-left: 5%;
+	margin-top: 4%;
+}
+
+input.token {
+	height: 30px;
+	width: 80%;
+	border-radius: 10px;
+	margin-top: 10px;
+	color: black;
+}
+
+input.token:focus {
+	outline: none;
+}
+
+button.token-check {
+	margin-top: 10px;
+	height: 30px; width: 10%;
+	display: inline;
+	background-color: transparent;
+	border-radius: 10px;
+	border: 2px solid white;
+	transition: 0.5s;
+}
+
+button.token-check:hover {
+	background-color: white;
+	color: black;
+}
+
+
+i.delete {
+	font-size: 50px;
+	cursor: pointer;
+	transition: 0.3s;
+	display: inline-block;
+}
+
+i.delete:hover {
+	color: red;
+}
