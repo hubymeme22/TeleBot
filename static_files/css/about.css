@@ -1,0 +1,65 @@
+body {
+	background-image: none;
+	background-color: #23508b;
+}
+
+footer {
+	position: absolute;
+	bottom: 0%;
+}
+
+img {
+	height: 200px;
+}
+
+div.content-limiter {
+	width: 60%;
+	margin: auto;
+	font-size: 18px;
+}
+
+#about-container {
+	height: 500px;
+	width: 50%;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #102b4d;
+	border-radius: 20px;
+	text-align: center;
+	box-shadow: 0px 0px 3px 3px rgb(0, 0, 0);
+}
+
+#about {
+	text-align: center;
+	margin: auto;
+}
+
+#goback {
+	background-color: transparent;
+	border: none;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	transition: 0.5s;
+}
+
+#goback:hover {
+	background-color: white;
+	color: black;
+}
+
+button.selection {
+	width: 80%;
+	height: 50px;
+	color: white;
+	background-color: transparent;
+	border: none;
+	transition: 0.5s;
+	font-size: 18px;
+}
+
+button.selection:hover {
+	background-color: white;
+	color: black;
+	font-weight: bold;
+}

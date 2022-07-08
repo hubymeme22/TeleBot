@@ -10,6 +10,14 @@
 	animation: expand-downwards 0.5s forwards;
 }
 
+.forward-bg-change {
+	animation: bg-forward-change 1s forwards;
+}
+
+.backward-bg-change {
+	animation: bg-backward-change 1s forwards;
+}
+
 @keyframes fade-in {
 	from { opacity: 0; }
 	to { opacity: 1; }
@@ -30,4 +38,14 @@
 @keyframes expand-downwards {
 	from { height: 0px; }
 	to { height: 300px; }
+}
+
+@keyframes bg-forward-change {
+	from { background-color: rgb(34, 17, 58) ; }
+	to   { background-color: #23508b; }
+}
+
+@keyframes bg-backward-change {
+	from { background-color: #23508b ; }
+	to   { background-color: rgb(34, 17, 58) ; }
 }
