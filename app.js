@@ -34,7 +34,21 @@ app.get('/add_token/:token', (req, res) => {
 	res.send(response);
 });
 
+// for running a specific bot
+app.get('/run/:token', (req, res) => {
+	const token = req.params.token;
 
+	// run this token
+});
+
+// for adding bot functionality
+app.post('/add_function/:token', (req, res) => {
+	const token = req.params.token;
+	const json_data = req.body;
+
+	const response = TGFunctions.addFunction(token, json_data);
+	res.send(response);
+});
 
 const ip = 'localhost';
 const port = 80;
