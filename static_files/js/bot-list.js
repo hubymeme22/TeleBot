@@ -139,9 +139,8 @@ about      = buttons[3];
 contribute = buttons[4];
 
 // back to main interface
-properties.onclick = () => {
-	window.location.replace('app.html');
-}
+properties.onclick = () => { window.location.replace('app.html'); }
+about.onclick = () => { window.location.replace('about.html'); }
 
 // if user wants to add a bot
 addbot_button.onclick = add_bot_template

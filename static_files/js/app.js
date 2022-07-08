@@ -6,8 +6,8 @@ addbot     = buttons[2]
 about      = buttons[3]
 contribute = buttons[4]
 
-botlist.onclick = () => {
-	window.location.replace('bot-list.html')
-}
+botlist.onclick = () => { window.location.replace('bot-list.html'); }
+about.onclick = () => { window.location.replace('about.html'); }
+
 
 // just for footer design
