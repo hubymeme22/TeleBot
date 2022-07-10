@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/template.css">
+	<link rel="stylesheet" href="css/contribute.css">
+	<title>TeleBot Manager</title>
+</head>
+<body>
+
+	<header class="center">
+		<div class="header-holder">
+			<div class="header-element-wrapper">
+				<p class="header-title">TeleBot</p>
+			</div>
+			<div class="header-element-wrapper button-container">
+				<button class="header">Properties</button>
+				<button class="header">Bot List</button>
+				<button class="header">Export Bot</button>
+			</div>
+			<div class="header-element-wrapper-right">
+				<button class="header">About</button>
+				<button class="header header-selected">Contribute</button>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<img class="fade-in-upwards" src="images/BotManager-Contribute-welcome.png">
+		<div class="welcome-content fade-in-upwards">
+			<h1>Welcome to contribution!</h1>
+			<p class="normalized-size justify-text">
+				Are you a developer and want to contribute a bot concept? This page is for you! Code your own bot and flex it to everyone by submitting pull request on Github!
+				Instructions can be seen <b>here</b>. Want to make your own bot but you don't want to upload it? It's okay since you can implement one here locally!
+			</p>
+		</div>
+		<button class="proceed fade-in-upwards" id="proceed">Proceed</button>
+		<div class="breaker"></div>
+		<section id="contribute">
+			<h1 class="center-text">Choose your contribution</h1>
+			<p id="text-sub" class="center-text fade-in-upwards">
+				Showing your dev skills huh? Flex some in Git!
+			</p>
+			<br/><br/>
+			<div id="local" class="card left-card">
+				<div id="cover-local" class="downwards">
+					<p id="local_label">
+						Local Contribution
+						<br/>
+						(Only for this pc)
+					</p>
+				</div>
+				<div class="image-holder"></div>
+			</div>
+
+			<div id="git" class="card right-card">
+				<div id="cover-git" class="downwards">
+					<p id="git_label">
+						Git Contribution
+						<br/>
+						(Collab w/others)
+					</p>
+				</div>
+				<div class="image-holder"></div>
+			</div>
+
+		</section>
+		<div class="breaker"></div>
+	</main>
+	<footer>Copyright © HueHueberry 2022</footer>
+	<script src="js/contribute.js"></script>
+</body>
+</html>

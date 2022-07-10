@@ -7,6 +7,7 @@ contribute = buttons[4]
 
 properties.onclick = () => { window.location.replace('app.html'); }
 botlist.onclick = () => { window.location.replace('bot-list.html'); }
+contribute.onclick = () => { window.location.replace('contribute.html'); }
 
 wt.onclick = () => {
 	document.querySelector('body').classList.add('backward-bg-change');

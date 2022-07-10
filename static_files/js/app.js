@@ -8,6 +8,6 @@ contribute = buttons[4]
 
 botlist.onclick = () => { window.location.replace('bot-list.html'); }
 about.onclick = () => { window.location.replace('about.html'); }
-
+contribute.onclick = () => { window.location.replace('contribute.html'); }
 
 // just for footer design

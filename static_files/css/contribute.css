@@ -1,0 +1,106 @@
+body {
+	background-image: none;
+	background-color: #23508b;
+}
+
+img {
+	width: 25%;
+	height: auto;
+	margin-left: 5%;
+	margin-top: 2%;
+	float: left;
+}
+
+section {
+	padding-top: 130px;
+}
+
+div.welcome-content {
+	margin-top: 2%;
+	margin-left: 5%;
+	width: 50%;
+	float: left;
+}
+
+div.card {
+	height: 300px;
+	width: 250px;
+	cursor: pointer;
+	float: left;
+	border-radius: 10px;
+	background-color: rgb(15, 11, 29);
+	box-shadow: 0px 0px 5px rgb(37, 38, 56);
+	border-left: 10px solid rgb(15, 11, 29);
+	border-right: 10px solid rgb(15, 11, 29);
+	transition: 1s;
+}
+
+div.card:hover {
+	box-shadow: 20px 20px 20px rgb(37, 38, 56);
+}
+
+div.left-card {
+	margin-left: calc(50% - 250px - 5%);
+}
+
+div.right-card {
+	margin-left: 10%;
+}
+
+div.downwards {
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 10px;
+	pointer-events: none;
+	width: 100%;
+	border-left: 10px double rgba(255, 255, 255, 0.9);
+	border-right: 10px double rgba(255, 255, 255, 0.9);
+	margin-left: -10px;
+	font-size: 20px;
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button.proceed {
+	display: block;
+	margin: auto;
+	padding: 20px;
+	font-size: 15px;
+	background-color: transparent;
+	border: 1px solid white;
+	transition: 0.5s;
+	clear: both;
+}
+
+button.proceed:hover {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+button.proceed:hover {
+	background-color: white;
+	color: black;
+}
+
+#local_label, #git_label {
+	display: none;
+	opacity: 0;
+	text-align: center;
+	font-weight: bold;
+	color: black;
+}
+
+#local {
+	background-image: url('../images/local-network.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+#git {
+	background-image: url('../images/global-network.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}

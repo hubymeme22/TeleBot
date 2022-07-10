@@ -160,3 +160,7 @@ i.delete {
 i.delete:hover {
 	color: red;
 }
+
+.fade-in {
+	animation: fade-in 2s forwards;
+}

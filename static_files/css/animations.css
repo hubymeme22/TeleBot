@@ -1,9 +1,18 @@
+:root {
+	--last_height_local: 0px;
+	--last_height_git: 0px;
+}
+
 .fade-in-upwards {
 	animation: fade-in-upwards 2s forwards;
 }
 
 .fade-in {
-	animation: fade-in 2s forwards;
+	animation: fade-in 0.5s forwards;
+}
+
+.fade-out {
+	animation: fade-out 0.5s forwards;
 }
 
 .expand-downwards {
@@ -18,9 +27,30 @@
 	animation: bg-backward-change 1s forwards;
 }
 
+.card-up-local {
+	animation: card-up-local 0.5s forwards;
+}
+
+.card-down-local {
+	animation: card-down-local 0.5s forwards;
+}
+
+.card-up-git {
+	animation: card-up-git 0.5s forwards;
+}
+
+.card-down-git {
+	animation: card-down-git 0.5s forwards;
+}
+
 @keyframes fade-in {
 	from { opacity: 0; }
 	to { opacity: 1; }
+}
+
+@keyframes fade-out {
+	from { opacity: 1; }
+	to   { opacity: 0; }
 }
 
 @keyframes fade-in-upwards {
@@ -48,4 +78,44 @@
 @keyframes bg-backward-change {
 	from { background-color: #23508b ; }
 	to   { background-color: rgb(34, 17, 58) ; }
+}
+
+@keyframes card-down-local {
+	from { 
+		height: var(--last_height_local);
+	}
+
+	to {
+		height: 100%;
+	}
+}
+
+@keyframes card-up-local {
+	from {
+		height: var(--last_height_local);
+	}
+
+	to {
+		height: 0%;
+	}
+}
+
+@keyframes card-down-git {
+	from { 
+		height: var(--last_height_git);
+	}
+
+	to {
+		height: 100%;
+	}
+}
+
+@keyframes card-up-git {
+	from {
+		height: var(--last_height_git);
+	}
+
+	to {
+		height: 0%;
+	}
 }
