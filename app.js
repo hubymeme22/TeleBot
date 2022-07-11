@@ -39,14 +39,25 @@ app.get('/run/:token', (req, res) => {
 	const token = req.params.token;
 
 	// run this token
+	const response = TGFunctions.startBot(token);
+	res.send(response);
 });
 
-// for adding bot functionality
-app.post('/add_function/:token', (req, res) => {
+// for setting the bot's whole functionality
+app.post('/set_function/:token', (req, res) => {
 	const token = req.params.token;
 	const json_data = req.body;
 
-	const response = TGFunctions.addFunction(token, json_data);
+	const response = TGFunctions.setFunction(token, json_data);
+	res.send(response);
+});
+
+// for adding bot function
+app.post('/add_function/:token', (req, res) => {
+	const token = req.params.token;
+	const bot_func = req.body;
+
+	const response = TGFunctions.addFunction(token, bot_func);
 	res.send(response);
 });
 

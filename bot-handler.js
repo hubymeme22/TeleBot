@@ -1,3 +1,5 @@
+process.env.NTBA_FIX_319 = 1;
+const TelegramBot = require('node-telegram-bot-api');
 const Axios = require('axios');
 const fs = require('fs');
 
@@ -10,18 +12,46 @@ const CallbackMap = require('./BotMap/callbacks.json');
 const botInstanceMap = {};
 class BotHandler {
 	constructor(token='', callback_list=[]) {
-		this.botObj = null;
+		this.botObj = new TelegramBot(token, {polling : true});
 		this.callbacks = [];
 
-		callback_list.forEach((item, index) => {
-			if (CallbackMap[item] != undefined) {
-				const module = require(`./BotMap/${CallbackMap[item]}`);
-				this.callbacks.push(module);
-			}
+		callback_list.forEach((item) => {
+			this.useFunction(item);
+		});
+	}
+
+	useFunction(keyword='') {
+		if (CallbackMap[keyword] != undefined) {
+			const module = require(`./BotMap/${CallbackMap[item]}`);
+			this.callbacks.push(module);
+
+			return true;
+		}
+
+		return false;
+	}
+
+	startBot() {
+		this.callbacks.forEach((item) => {
+
+			// let the bot use all the callbacks from the module
+			const internalCallbackNames = Object.keys(item);
+			internalCallbackNames.forEach((callbackName) => {
+
+				console.log(`[BotHandler] Added function : ${callbackName}`);
+				this.botObj.onText(new RegExp(`/${callbackName} (.+)`), (msg, match) => {
+					item[callbackName](this.botObj, msg, match);
+				});
+
+			});
 		});
 	}
 }
 
+
+/////////////////////////////
+//  TGFunctions (for API)  //
+/////////////////////////////
 // updates the bot list
 function updateList() {
 		// update the botlist
@@ -54,17 +84,27 @@ function addToken(token) {
 		};
 		updateList();
 
-		const response = {}; response[token] = BotList[token];
+		const response = {};response[token] = BotList[token];
 		return response;
 	}
 
 	return {};
 }
 
-// for adding bot functionality
-function addFunction(token, json_data={}) {
+function addFunction(token, function_name) {
+	if (BotList[token] == null || BotList[token] == undefined)
+		return 'nonexistent_bot';
+
+	if (botInstanceMap[token] == null || botInstanceMap[token] == undefined)
+		return 'bot_not_started';
+
+	return botInstanceMap[token].useFunction(function_name);
+}
+
+// sets the bot's function
+function setFunction(token, func_arr=[]) {
 	if (BotList[token] != null || BotList[token] != undefined) {
-		BotList[token].functionalities = json_data;
+		BotList[token].functionalities = func_arr;
 		return 'success';
 	}
 
@@ -73,28 +113,38 @@ function addFunction(token, json_data={}) {
 
 // for running the bot and executing functions
 function startBot(token) {
-	if (BotList[token] != null || BotList[token] != undefined) {
-		// retrieve functions for this bot
-		const bot_functions = BotList[token].functionalities;
-		const run_log = [];
+	if (BotList[token].status === 'open')
+		return ['already_running'];
 
-		// execute and run these functions
-		// make bot_instance
-		bot_functions.forEach((item, idx) => {
-			// check item string and
-			// bot_instance add_function: item
-		});
+	if (BotList[token] == null || BotList[token] == undefined)
+		return [];
 
-		// run bot_instance
-		return run_log;
-	}
+	// retrieve functions for this bot
+	const bot_functions = BotList[token].functionalities;
+	const run_log = [];
 
-	return [];
+	// execute and run these functions
+	// make bot_instance
+	botInstanceMap[token] = new BotHandler(token);
+	bot_functions.forEach((item) => {
+		// check item string and
+		// bot_instance add_function: item
+		const status = BotInstance.addFunction(item);
+		run_log.push(status);
+	});
+
+	// run bot_instance
+	botInstanceMap[token].startBot();
+	botInstanceMap[token].status = 'open';
+	updateList();
+
+	return run_log;
 }
 
 module.exports = {
 	'checkBot' : checkBot,
 	'addToken' : addToken,
+	'setFunction' : setFunction,
 	'addFunction' : addFunction,
 	'startBot' : startBot
 };
