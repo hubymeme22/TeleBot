@@ -173,3 +173,21 @@ div.card-wrapper {
 
 	float: left
 }
+
+#proceed {
+	display: block;
+	margin: auto;
+	padding: 20px;
+	font-size: 15px;
+	background-color: transparent;
+	border: 1px solid white;
+	transition: 0.5s;
+	clear: both;
+}
+
+#proceed:hover {
+	background-color: white;
+	color: black;
+	padding-left: 30px;
+	padding-right: 30px;
+}

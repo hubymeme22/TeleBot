@@ -62,27 +62,6 @@ div.downwards {
 	align-items: center;
 }
 
-button.proceed {
-	display: block;
-	margin: auto;
-	padding: 20px;
-	font-size: 15px;
-	background-color: transparent;
-	border: 1px solid white;
-	transition: 0.5s;
-	clear: both;
-}
-
-button.proceed:hover {
-	padding-left: 30px;
-	padding-right: 30px;
-}
-
-button.proceed:hover {
-	background-color: white;
-	color: black;
-}
-
 #local_label, #git_label {
 	display: none;
 	opacity: 0;
