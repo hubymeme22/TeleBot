@@ -84,11 +84,17 @@ function addToken(token) {
 		};
 		updateList();
 
-		const response = {};response[token] = BotList[token];
+		const response = {};
+		response['repeat'] = false;
+		response[token] = BotList[token];
 		return response;
 	}
 
-	return {};
+	const response = {};
+	response['repeat'] = true;
+	response[token] = BotList[token];
+
+	return response;
 }
 
 function addFunction(token, function_name) {
@@ -113,7 +119,7 @@ function setFunction(token, func_arr=[]) {
 
 // for running the bot and executing functions
 function startBot(token) {
-	if (BotList[token].status === 'open')
+	if (BotList[token].status === 'open' || botInstanceMap[token] != null || botInstanceMap != undefined)
 		return ['already_running'];
 
 	if (BotList[token] == null || BotList[token] == undefined)
@@ -121,7 +127,7 @@ function startBot(token) {
 
 	// retrieve functions for this bot
 	const bot_functions = BotList[token].functionalities;
-	const run_log = [];
+	const run_log = ['r_log'];
 
 	// execute and run these functions
 	// make bot_instance
