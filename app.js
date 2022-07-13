@@ -43,6 +43,12 @@ app.get('/run/:token', (req, res) => {
 	res.send(response);
 });
 
+// for getting all the user's current bot
+app.get('/bot_list', (req, res) => {
+	const list = require('./BotMap/bot_map.json');
+	res.send(list);
+});
+
 // for setting the bot's whole functionality
 app.post('/set_function/:token', (req, res) => {
 	const token = req.params.token;
