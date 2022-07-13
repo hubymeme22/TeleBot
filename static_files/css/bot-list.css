@@ -3,164 +3,205 @@ body {
 	background-image: none;
 }
 
-div.addbot-container {
-	border-top: 3px solid white;
+button {
+	cursor: pointer;
 }
 
-div.bot-instance {
-	height: 300px;
-	width: 40%;
-
-	border-radius: 20px;
-	border: 3px solid rgb(255, 255, 255);
-	background-color: #102b4d;
+hr {
+	margin: 0 auto;
+	width: 80%;
 }
 
-div.grid-container {
-	display: grid;
-	grid-template-columns: 15% 80%;
-	grid-template-rows: auto auto;
-	border-radius: 15px;
+#main_section {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
 
+#bot_container {
+	padding: 40px;
+	width: 80%;
 	height: auto;
-	width: 90%;
-	column-gap: 5%;
-	/* border: 1px solid green; */
-	margin-left: 5%;
-	margin-top: 5%;
+	margin: 0 auto;
+	border-radius: 20px;
+	/* box-shadow: 0px 0px 20px black; */
+	background-color: #122142;
+	color: white;
+	text-align: center;
 }
 
-div.grid1 {
-	/* border-radius: 50%; */
-	background-color: transparent;
-}
-
-div.grid2 {
-	height: 50px;
-	width: 100%;
-	/* background-color: white; */
-}
-
-div.grid3 {
-	height: 100%;
-	width: 100%;
-
-	/* background-color: green; */
-}
-
-div.grid-empty {
-	height: 100%; width: 100%;
-	/* background-color: black; */
-	border: 2px solid transparent;
-}
-
-div.details-container {
-	width: 70%; 
-	padding: 20px;
-	margin-top: 10px;
-	border-radius: 10px;
-	background-color: #461969;
-	display: inline-block;
-}
-
-
-div.delete-container {
-	display: inline-block;
-	height: 100%;
-}
-
-div.profile {
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
+#add_bot {
+	display: block;
+	height: 40px;
+	width: 40px;
+	margin: 0 auto;
+	margin-top: -20px;
 	border: 2px solid white;
-}
-
-div.pseudoContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	width: 100%;
-	margin-top: 30px;
-}
-
-button.add-bot {
-	height: 50px;
-	width: 50px;
-	margin-top: -25px;
-	border: 3px solid white;
 	border-radius: 50%;
 	background-color: #23508b;
+	font-size: 20px;
 	transition: 0.5s;
+
+	margin-bottom: 10px;
 }
 
-button.add-bot:hover {
-	height: 60px;
-	width: 60px;
-	margin-top: -30px;
-}
-
-button.checker {
-	margin-top: 10px;
-	height: 35px;
-	background-color: transparent;
-	border: 2px solid black;
-	border-radius: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-span.profile {
-	display: inline-block;	
-	height: 50px; width: 50px;
-	/* background-color: rgb(30, 29, 29); */
-	border: 2px solid black;
-	border-radius: 50%;
-
-	margin-left: 5%;
-	margin-top: 4%;
-}
-
-input.token {
-	height: 30px;
-	width: 80%;
-	border-radius: 10px;
-	margin-top: 10px;
-	color: black;
-}
-
-input.token:focus {
-	outline: none;
-}
-
-button.token-check {
-	margin-top: 10px;
-	height: 30px; width: 10%;
-	display: inline;
-	background-color: transparent;
-	border-radius: 10px;
-	border: 2px solid white;
-	transition: 0.5s;
-}
-
-button.token-check:hover {
+#add_bot:hover {
+	height: 48px; width: 48px;
+	margin-top: -24px;
+	font-size: 22px;
+	font-weight: bold;
 	background-color: white;
 	color: black;
 }
 
 
-i.delete {
-	font-size: 50px;
+/*********************
+*   BOT CARD PART    *
+**********************/
+div.card {
+	height: 300px;
+	width: 220px;
+	background-color: rgb(58, 82, 202);
+	border: 3px solid white;
+	display: inline-block;
+	margin: 0 auto;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 40px;
+	border-radius: 10px;
 	cursor: pointer;
 	transition: 0.3s;
-	display: inline-block;
 }
 
-i.delete:hover {
-	color: red;
+div.profile {
+	height: 79%;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-image: url('../images/artificial-intelligence.png');
 }
 
-.fade-in {
-	animation: fade-in 2s forwards;
+div.info {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	height: calc(20% - 17px);
+	width: calc(100% - 19px);
+	/* margin-left: -1px; */
+	background-color: black;
+	padding: 10px;
+	color: white;
+}
+
+p.info-name {
+	display: inline;
+	font-size: 20px;
+	margin-right: 30px;
+	font-family: Consolas;
+}
+
+button.info-button {
+	height: 20px;
+	width: 20px;
+	border-radius: 30%;
+}
+
+button.start-info-button {
+	background-color: red;
+	border: 1px solid red;
+}
+
+button.start-info-button-started {
+	background-color: green;
+	border: 1px solid green;
+}
+
+button.del-info-button {
+	border: 1px solid white;
+	background-color: white;
+	background-image: url('../images/delete.ico');
+	background-position: center;
+	background-size: contain;
+	transition: 1s;
+}
+
+button.more-bot-info {
+	border: 1px solid white;
+	background-color: white;
+	background-image: url('../images/information.png');
+	background-position: center;
+	background-size: contain;
+}
+
+button.del-info-button:hover {
+	background-color: red;
+	border: 1px solid red;
+}
+
+button.more-bot-info:hover {
+	background-color: yellow;
+	border: 1px solid yellow;
+}
+
+div.card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0px 5px 30px black;
+}
+
+/************************
+*  Add bot button part  *
+*************************/
+section.input-token {
+	position: fixed;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	top: 0; left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-size: 18;
+}
+
+a { font-weight: bold;}
+
+div.form-design {
+	width: 30%;
+	padding: 20px;
+	background-color: rgb(36, 37, 117);
+	border-radius: 30px;
+	border: 5px solid white;
+	/* color: black; */
+}
+
+p.enter-bot-token {
+	margin: 0;
+	font-size: 20px;
+	/* color: black; */
+}
+
+p.submit-status {
+	font-size: 14px;
+	font-family: Consolas;
+}
+
+input.input-token {
+	height: 30px;
+	width: calc(80% - 20px);
+	border-radius: 20px;
+	border: none;
+	color: black;
+	padding-left: 3px;
+}
+
+button.input-token {
+	height: 35px;
+	width: calc(20% - 20px);
+	border: 1px solid white;
+	background-color: transparent;
+	border-radius: 10px;
+	margin-left: 4%;
+	transition: 0.5s;
+}
+
+button.input-token:hover {
+	background-color: white;
+	color: black;
 }

@@ -1,129 +1,168 @@
-let bot_count = 0;
-let field_used = false;
+////////////////////////////////
+//  card appearance designer  //
+////////////////////////////////
+const bot_container = document.getElementById('bot_container');
+let botIDTracker = 1;
+let cardList = {
+	// card_1 : {
+	// 	'start'  : document.getElementById('start-button-1'),
+	// 	'delete' : [document.getElementById('del-button-1'), '1'],
+	// 	'info'   : [document.getElementById('info-button-1'), {
+	// 		token : '',
+	// 		nickname : '',
 
-// just switches the old class with new one
-function replace_class(node, old_class, new_class) {
-	node.classList.remove(old_class);
-	node.classList.add(new_class);
-}
+	// 	}]
+	// }
+};
 
+function addBot(nickname, statusJSONData) {
+	let newNickname = nickname;
+	if (nickname.length > 8)
+		newNickname = nickname.slice(0, 5) + '...';
 
+	if (botIDTracker == 1)
+		bot_container.innerText = '';
 
-// resets the old id
-function reset_ids() {
-	const profile = document.getElementById('profile');
-	const bot_token = document.getElementById('token');
-	const checker = document.getElementById('token-check');
-	const bot_stats = document.getElementById('bot-stats');
-	const username = document.getElementById('bot-user');
-	const can_join = document.getElementById('bot-can-join');
-	const can_read = document.getElementById('bot-can-read');
+	const html_content = `
+		<div class="card expand-downwards">
+		<div class="profile"></div>
+		<div class="info">
+			<button class="info-button start-info-button" id="start-button-${botIDTracker}"></button>
+			<p class="info-name" id="nname_${botIDTracker}">${newNickname}</p>
 
-	profile.removeAttribute('id');
-	bot_token.removeAttribute('id');
-	bot_stats.removeAttribute('id');
-	username.removeAttribute('id');
-	can_join.removeAttribute('id');
-	can_read.removeAttribute('id');
-	checker.removeAttribute('id');
-}
+			<button class="info-button del-info-button" id="del-button-${botIDTracker}"></button>
+			<button class="info-button more-bot-info" id="info-button-${botIDTracker}"></button>
+		</div>
+		</div>`;
 
-
-
-// pass the token inputted to the api server
-function submit_bot_token() {
-	// UI interface data
-	const profile = document.getElementById('profile');
-	const bot_token = document.getElementById('token');
-	const bot_stats = document.getElementById('bot-stats');
-	const username = document.getElementById('bot-user');
-	const can_join = document.getElementById('bot-can-join');
-	const can_read = document.getElementById('bot-can-read');
-	const checker = document.getElementById('token-check')
-
-	// check for bot token value
-	if (bot_token.value === '') {
-		alert('Please input a token');
-		return;
-	}
-
-	// check token and run it
-	packedRequest_GET(window.location.origin + `/check_token/${bot_token.value}`, (type, data) => {
-		if (type === 'response') {
-			if (data.ok) {
-
-				bot_stats.innerText = 'Pending';
-				username.innerText = data.result.username;
-				can_join.innerText = data.result.can_join_groups;
-				can_read.innerText = data.result.can_read_all_group_messages;
-
-				replace_class(bot_stats, 'text-grey', 'text-yellow');
-				replace_class(username, 'text-grey', 'text-white');
-				replace_class(can_join, 'text-grey', 'text-white');
-				replace_class(can_read, 'text-grey', 'text-white');
-
-				checker.disabled = true;
-				bot_token.readOnly = true;
-				bot_count += 1;
-				field_used = true;
-
-				packedRequest_GET(window.location.origin + `/add_token/${bot_token.value}`, (type, data) => {
-					if (type === 'response') {
-						console.log(data);
-					}
-
-					reset_ids();
-				});
-
-			} else {
-
-				bot_stats.innerText = 'Non-existent Bot';
-				replace_class(bot_stats, 'text-grey', 'text-red');
-
-			}
-		} else {
-			alert('An Error occured');
-		}
-	})
-
-	// upper message part
-	if ((bot_count > 0) && document.getElementById('no-bot').innerText.includes('Homie')) {
-		const element = document.getElementById('no-bot');
-		element.innerText = 'Bot List below';
-		element.classList.remove('fade-in-upwards');
-
-		setTimeout(() => { element.classList.add('fade-in-upwards') }, 500);
-	}
-}
-
-
-
-// function for adding a bot-adder template
-function add_bot_template() {
-	if (!field_used) {
-		alert('Please add a valid bot first before adding new');
-		return;
-	}
-
-	const bot_template = '<div class="bot-instance expand-downwards"><div class="grid-container fade-in"><div class="grid1 center"><div class="profile" id="profile"></div></div><div class="grid2"><input id="token" class="token" type="text" placeholder="Enter Your bot token here to check..."><button id="token-check" class="token-check">></button></div><div class="grid-empty"></div><div class="grid3">Bot Status: <b id="bot-stats" class="text-grey bot-stats">Offline</b><br/>Bot Details:<br/><div class="details-container">Username: <b id="bot-user" class="bot-user text-grey">N/A</b><br/>Can Join Groups: <b id="bot-can-join" class="bot-can-join text-grey">N/A</b><br/>Can read all grp message: <b id="bot-can-read" class="text-grey bot-can-read">N/A</b></div><i class="material-icons delete" id="delete">delete</i></div><div class="grid-empty"></div></div></div>';
-	const breaker = document.createElement('br');
-	const root_node = document.createElement('div');
-	const bot_tmp_container = document.getElementById('instance-container');
-
-	// add the attributes to th(ese)is needed element/s
-	root_node.classList.add('pseudoContainer');
-
-	// add to their respective children
-	root_node.innerHTML = bot_template;
-	bot_tmp_container.appendChild(breaker);
-	bot_tmp_container.appendChild(root_node);
-
-	// wait for the page to refresh
+	bot_container.innerHTML += html_content;
 	setTimeout(() => {
-		document.getElementById('token-check').onclick = submit_bot_token;
-	}, 500)
+
+		// update the cardlist
+		const botID = `card_${botIDTracker}`;
+		cardList[botID] = {};
+		cardList[botID]['start']  = document.getElementById(`start-button-${botIDTracker}`);
+		cardList[botID]['delete'] = document.getElementById(`del-button-${botIDTracker}`);
+		cardList[botID]['info']   = [document.getElementById(`info-button-${botIDTracker}`), statusJSONData];
+
+		// update the botlist
+		const botStatus = cardList[botID]['info'][1].status;
+		if (botStatus == 'open') {
+			cardList[botID]['start'].classList.remove('start-info-button');
+			cardList[botID]['start'].classList.add('start-info-button-started');
+		} else {
+			cardList[botID]['start'].classList.remove('start-info-button-started');
+			cardList[botID]['start'].classList.add('start-info-button');
+		}
+
+
+		// add the button definitions
+		cardList[botID]['start'].onclick = () => {
+			// checks the current status
+			const botStatus = cardList[botID]['info'][1].status;
+			console.log(botStatus);
+			if (botStatus === 'open') {
+				cardList[botID]['start'].classList.remove('start-info-button-started');
+				cardList[botID]['start'].classList.add('start-info-button');
+				cardList[botID]['info'][1].status = 'close';
+			} else {
+				cardList[botID]['start'].classList.remove('start-info-button');
+				cardList[botID]['start'].classList.add('start-info-button-started');
+				cardList[botID]['info'][1].status = 'open';
+			}
+		};
+
+		cardList[botID]['delete'].onclick = () => {
+
+		};
+
+		botIDTracker++;
+	}, 500);
 }
 
+////////////////////////////////
+//  Submit button definition  //
+////////////////////////////////
+const addbotinfo = document.getElementById('add_bot');
+const close_tsection = document.getElementById('close_token_section');
+const submit_bot = document.getElementById('start-bot-token');
+
+addbotinfo.onclick = () => {
+	document.getElementById('token-section').classList.remove('fade-out');
+	document.getElementById('token-section').classList.add('fade-in');
+	document.getElementById('token-section').style.display = '';
+};
+
+close_tsection.onclick = () => {
+	document.getElementById('token-section').classList.remove('fade-in');
+	document.getElementById('token-section').classList.add('fade-out');
+	setTimeout(() => { document.getElementById('token-section').style.display = 'none'; }, 500);
+
+	document.getElementById('input-bot-token').value = '';
+	document.getElementById('submit_status').innerHTML = '';
+};
+
+submit_bot.onclick = () => {
+	const logs = document.getElementById('submit_status');
+	const token = document.getElementById('input-bot-token').value;
+
+	logs.innerText = 'Checking bot token...';
+	packedRequest_GET(window.location.origin + `/check_token/${token}`, (type, response) => {
+		if (!response.ok) {
+			logs.innerHTML += ' [<b class="text-red">Failed</b>]';
+			return;
+		}
+
+		// saves the token to the local files
+		logs.innerHTML += ' [<b class="text-green">Good</b>]';
+		const nickname = response.result.username;
+		packedRequest_GET(window.location.origin + `/add_token/${token}`, (type, response) => {
+			logs.innerHTML += '<br>Saving bot to server...';
+			if (type != 'response') {
+				logs.innerHTML += ' [<b class="text-red">Failed</b>]';
+				return;
+			}
+
+			if (!response.repeat) {
+				logs.innerHTML += ' [<b class="text-green">Good</b>]';
+				addBot(nickname, response);
+			} else {
+				logs.innerHTML += ' [<b class="text-yellow">Already registered</b>]';
+			}
+		});
+
+		// check if the user wants the bot to run
+		const start_and_run = document.getElementById('sandr');
+		if (!start_and_run.checked) {
+			logs.innerHTML += '<br>Running bot... [<b class="text-yellow">Cancelled</b>]';
+			return;
+		}
+
+		// runs the bot
+		packedRequest_GET(window.location.origin + `/run/${token}`, (type, response) => {
+			logs.innerHTML += '<br>Running bot...';
+			if (type != 'response') {
+				logs.innerHTML += ' [<b class="text-red">Failed</b>]';
+				return;
+			}
+
+			if (response[0] == 'r_log') {
+				logs.innerHTML += ' [<b class="text-green">Running</b>]'
+				return;
+			}
+
+			if (JSON.stringify(response) == '["already_running"]') {
+				logs.innerHTML += ' [<b class="text-yellow">Already Running</b>]'
+				return;
+			}
+
+			if (response == []) {
+				logs.innerHTML += ' [<b class="text-red">Bot Not Saved</b>]'
+				return;
+			}
+		});
+	});
+};
 
 //////////////////////////////
 //  button functionalities  //
@@ -142,7 +181,3 @@ contribute = buttons[4];
 properties.onclick = () => { window.location.replace('app.html'); }
 about.onclick = () => { window.location.replace('about.html'); }
 contribute.onclick = () => { window.location.replace('contribute.html'); }
-
-// if user wants to add a bot
-addbot_button.onclick = add_bot_template
-b_check.onclick = submit_bot_token

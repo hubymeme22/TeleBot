@@ -35,51 +35,51 @@
 
 		</div>
 	</header>
+
 	<main>
-		<h1 id="no-bot" class="center-text fade-in-upwards">Homie you got no bot/s :3</h1>
-		<div id="instance-container">
-			
-			<div class="pseudoContainer">
-				<div class="bot-instance expand-downwards">
-					<div class="grid-container fade-in">
+		<h2 class="center-text">Welcome to Bot Panel!</h2>
+		<p class="center-text">Delete and Manage your bot status here</p>
+		<section id="main_section">
+			<!-- Where bot "cards" will be put -->
+			<div id="bot_container">
 
-						<div class="grid1 center">
-							<div class="profile" id="profile"></div>
-						</div>
+				Oops! Looks like you don't have any bots yet
+				<!-- Sample card -->
+				<!-- <div class="card">
+					<div class="profile"></div>
+					<div class="info">
+						<button class="info-button start-info-button" id="start-button-1"></button>
+						<p class="info-name" id="nname_1">Nickname</p>
 
-						<div class="grid2">
-							<input class="token" id="token" type="text" placeholder="Enter Your bot token here to check...">
-							<button class="token-check" id="token-check">></button>
-						</div>
-
-						<div class="grid-empty"></div>
-
-						<div class="grid3">
-							Bot Status: <b id="bot-stats" class="text-grey">Offline</b>
-							<br/>
-							Bot Details:
-							<br/>
-							<div class="details-container">
-								Username: <b id="bot-user" class="text-grey">N/A</b>
-								<br/>
-								Can Join Groups: <b id="bot-can-join" class="text-grey">N/A</b>
-								<br/>
-								Can read all grp message: <b id="bot-can-read" class="text-grey">N/A</b>
-							</div>
-							<i class="material-icons delete" id="delete">delete</i>
-						</div>
-
-						<div class="grid-empty"></div>
+						<button class="info-button del-info-button" id="del-button-1"></button>
+						<button class="info-button more-bot-info" id="info-button-1"></button>
 					</div>
-				</div>
+				</div> -->
+				<!-- End Sample card -->
 			</div>
+		</section>
+		<hr></hr>
+		<button id="add_bot">+</button>
 
-		</div>
+		<section id="token-section" class="input-token center" style="display: none; opacity: 0;">
+			<div class="form-design">
+				<p class="enter-bot-token">Enter Bot Token</p>
+				<br/>
+				<input id="input-bot-token" class="input-token" type="text" placeholder="Check and Add token"/>
+				<button id="start-bot-token" class="input-token">start</button>
+				<br/><br/>
+				<input type="checkbox" id="sandr"> Start and Run
 
-		<br/><br/><br/>
-		<div class="max-width addbot-container center">
-			<button id="add-bot" class="add-bot">+</button>
-		</div>
+				<br/><br/>
+				<p class="justify-text">
+					How can I make sure that this app won't steal this token? We make sure that everything
+					that is happening from the internals of this program are transparent. Not satisfied?
+					you can always click <a href="#">here</a> to view this app's source code :)
+				</p>
+				<p id="submit_status" class="submit-status"></p>
+				<button class="input-token" id="close_token_section">Close</button>
+			</div>
+		</section>
 	</main>
 
 	<script src="js/bot-list.js"></script>
