@@ -41,6 +41,12 @@ app.get('/bot_list', (req, res) => {
 	res.send(list);
 });
 
+// for getting all the available (and planned) functionalities
+app.get('/function_list', (req, res) => {
+	const callback_types = require('./BotMap/callback_types.json');
+	res.send(callback_types);
+});
+
 // for adding the bot on the list of user
 // returns: bot default properties
 app.post('/add_token/:token', (req, res) => {
