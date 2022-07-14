@@ -82,13 +82,22 @@ function addBot(nickname, statusJSONData) {
 
 function retrieveBot() {
 	packedRequest_GET(window.location.origin + '/bot_list', (type, response) => {
-		if (type != 'reponse') return;
+		if (type != 'response') return;
 
 		// save the bot list to localStorage
-		const parsed_data = JSON.stringify(parsed_data);
+		const parsed_data = JSON.stringify(response);
 		window.localStorage.setItem('bot_list', parsed_data);
 
-		// 
+		// add each card to the display
+		const tokens = Object.keys(response);
+		tokens.forEach((item) => {
+			if (item != 'sample_bot_token') {
+				const bot_username = response[item].info.result.username;
+
+				console.log(`Added ${bot_username}`);
+				addBot(bot_username, response[item]);
+			}
+		});
 	});
 }
 
@@ -179,6 +188,7 @@ submit_bot.onclick = () => {
 /////////////////////////
 //   web app startups  //
 /////////////////////////
+retrieveBot();
 
 //////////////////////////////
 //  button functionalities  //
