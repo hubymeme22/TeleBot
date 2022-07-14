@@ -52,7 +52,7 @@
 		<button id="proceed" class="fade-in-upwards">Proceed</button>
 
 		<div id="basics" class="max-width breaker"></div>
-		<div class="function-container">
+		<div class="function-container" id="basic-container">
 			<h1>Basic Functions</h1>
 			<p class="justify-text normalized-size">
 				This part contains basic bot functionalities such as echo, ban, schedule, and so on.
@@ -60,34 +60,39 @@
 				To know what the command can do, right click the card to see description.
 			</p>
 
-			<div class="card-wrapper center"><button class="cards">/echo</button></div>
+			<!-- These cards will be retrieved now from the server -->
+			<!-- <div class="card-wrapper center"><button class="cards">/echo</button></div>
 			<div class="card-wrapper center"><button class="cards">/ping</button></div>
 			<div class="card-wrapper center"><button class="cards">/schedule</button></div>
-			<div class="card-wrapper center"><button class="cards">/ban</button></div>
-			<div class="max-width breaker"></div>
+			<div class="card-wrapper center"><button class="cards">/ban</button></div> -->
 		</div>
+		<div class="max-width breaker"></div>
 
-		<div class="function-container">
+		<div class="function-container" id="advanced-container">
 			<h1>Advanced Functions</h1>
 			<p class="justify-text normalized-size">
 				This part contains advanced bot functionalities like message logging, user monitoring, text-filter, and so on.
 				Right-click on the card to see the command's description.
 			</p>
 
-			<div class="card-wrapper center"><button class="cards cards-advanced">/msglog</button></div>
-			<div class="card-wrapper center"><button class="cards cards-advanced">/fltword</button></div>
+			<!-- These cards will be retrieved now from the server -->
+			<!-- <div class="card-wrapper center"><button class="cards cards-advanced">/msglog</button></div>
+			<div class="card-wrapper center"><button class="cards cards-advanced">/fltword</button></div> -->
 		</div>
+		<div class="max-width breaker"></div>
 
-		<div id="basics" class="max-width breaker"></div>
-		<div class="function-container">
+		<div class="function-container" id="contribution-container">
 			<h1>Contribution/s</h1>
 			<p class="justify-text normalized-size">
 				This part contains hybrid bot functionalities from our contributors! Feel free to use them!
 			</p>
 		</div>
+		<div class="max-width breaker"></div>
+
 	</main>
 
 	<footer>Copyright © HueHueberry 2022</footer>
+	<script src="js/request.js"></script>
 	<script src="js/app.js"></script>
 </body>
 
