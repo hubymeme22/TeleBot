@@ -1,0 +1,32 @@
+{
+  "echo": {
+    "type": "basic",
+	"active": true,
+	"description": ""
+  },
+  "ban": {
+    "type": "basic",
+	"active": false,
+	"description": ""
+  },
+  "ping": {
+    "type": "basic",
+	"active": false,
+	"description": ""
+  },
+  "schedule": {
+    "type": "basic",
+	"active": false,
+	"description": ""
+  },
+  "msglog": {
+    "type": "advanced",
+	"active": false,
+	"description": ""
+  },
+  "fltword": {
+    "type": "advanced",
+	"active": false,
+	"description": ""
+  }
+}
