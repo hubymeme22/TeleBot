@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+app.use(express.json());
 app.use(express.static('static_files'));
 app.use((req, res, next) => {
 	console.log(`${req.socket.remoteAddress}:${req.socket.remotePort} ==> ${req.url}`);
@@ -25,15 +26,6 @@ app.get('/check_token/:token', (req, res) => {
 	});
 });
 
-// for adding the bot on the list of user
-// returns: bot default properties
-app.get('/add_token/:token', (req, res) => {
-	const token = req.params.token;
-	const response = TGFunctions.addToken(token);
-
-	res.send(response);
-});
-
 // for running a specific bot
 app.get('/run/:token', (req, res) => {
 	const token = req.params.token;
@@ -47,6 +39,16 @@ app.get('/run/:token', (req, res) => {
 app.get('/bot_list', (req, res) => {
 	const list = require('./BotMap/bot_map.json');
 	res.send(list);
+});
+
+// for adding the bot on the list of user
+// returns: bot default properties
+app.post('/add_token/:token', (req, res) => {
+	const token = req.params.token;
+	const checks = req.body;
+	const response = TGFunctions.addToken(token, checks);
+
+	res.send(response);
 });
 
 // for setting the bot's whole functionality
