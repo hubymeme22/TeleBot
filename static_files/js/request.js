@@ -24,7 +24,7 @@ async function packedRequest_GET(host, callback=(type, response)) {
 async function packedRequest_POST(host, data, callback=(type, response)) {
 	await fetch(host, {
 		method: 'POST',
-		body: data,
+		body: JSON.stringify(data),
 		headers: {
 			'Content-Type': 'application/json'
 		}

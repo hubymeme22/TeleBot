@@ -80,6 +80,18 @@ function addBot(nickname, statusJSONData) {
 	}, 500);
 }
 
+function retrieveBot() {
+	packedRequest_GET(window.location.origin + '/bot_list', (type, response) => {
+		if (type != 'reponse') return;
+
+		// save the bot list to localStorage
+		const parsed_data = JSON.stringify(parsed_data);
+		window.localStorage.setItem('bot_list', parsed_data);
+
+		// 
+	});
+}
+
 ////////////////////////////////
 //  Submit button definition  //
 ////////////////////////////////
@@ -116,7 +128,7 @@ submit_bot.onclick = () => {
 		// saves the token to the local files
 		logs.innerHTML += ' [<b class="text-green">Good</b>]';
 		const nickname = response.result.username;
-		packedRequest_GET(window.location.origin + `/add_token/${token}`, (type, response) => {
+		packedRequest_POST(window.location.origin + `/add_token/${token}`, response, (type, response) => {
 			logs.innerHTML += '<br>Saving bot to server...';
 			if (type != 'response') {
 				logs.innerHTML += ' [<b class="text-red">Failed</b>]';
@@ -163,6 +175,10 @@ submit_bot.onclick = () => {
 		});
 	});
 };
+
+/////////////////////////
+//   web app startups  //
+/////////////////////////
 
 //////////////////////////////
 //  button functionalities  //
