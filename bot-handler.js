@@ -73,13 +73,15 @@ function checkBot(token='', callback=(data) => {}) {
 }
 
 // adds this specified bot to the list
-function addToken(token) {
+function addToken(token, checks={ok : false}) {
 	if (BotList[token] == undefined || BotList[token] == null) {
+		// double check the response
+		if (!checks.ok) return {};
 
 		// set the default bot properties
 		BotList[token] = {
 			"functionalities" : [],
-			"object" : {},
+			"info" : checks,
 			"status" : "close"
 		};
 		updateList();
@@ -119,7 +121,7 @@ function setFunction(token, func_arr=[]) {
 
 // for running the bot and executing functions
 function startBot(token) {
-	if (BotList[token].status === 'open' || botInstanceMap[token] != null || botInstanceMap != undefined)
+	if (BotList[token].status === 'open' || botInstanceMap[token] != undefined)
 		return ['already_running'];
 
 	if (BotList[token] == null || BotList[token] == undefined)
