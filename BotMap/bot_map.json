@@ -1,7 +1,23 @@
 {
   "sample_bot_token": {
     "functionalities": [],
-    "object": {},
+    "info": {},
     "status": "open"
+  },
+  "5501404508:AAEuQwhTV25TyL14K_qVICpb7Ze_LNw6IIY": {
+    "functionalities": [],
+    "info": {
+      "ok": true,
+      "result": {
+        "id": 5501404508,
+        "is_bot": true,
+        "first_name": "TGBotSample",
+        "username": "weird_cursed_bot",
+        "can_join_groups": true,
+        "can_read_all_group_messages": false,
+        "supports_inline_queries": false
+      }
+    },
+    "status": "close"
   }
 }
