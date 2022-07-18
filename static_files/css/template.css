@@ -1,3 +1,8 @@
+:root {
+	--basic-color: rgb(4, 85, 89);
+	--advanced-color: rgb(114, 78, 25);
+}
+
 @font-face {
 	font-family: 'OSansExtraBold';
 	src: url('fonts/open_sans_extrta_bold/OpenSans-ExtraBold.ttf');
@@ -174,6 +179,45 @@ div.card-wrapper {
 	float: left
 }
 
+div.function-info {
+	/* background-color: rgb(36, 37, 117); */
+	border-radius: 20px;
+	border: 3px solid white;
+	padding: 1%;
+	width: 30%;
+	height: auto;
+	margin: auto;
+}
+
+div.specific-info {
+	height: 50px;
+	width: 95%;
+	text-align: center;
+	margin: auto;
+	background-color: rgba(0, 0, 0, 0.177);
+	cursor: pointer;
+	transition: 1s;
+}
+
+div.specific-info:hover {
+	background-color: black;
+}
+
+div.close-container {
+	margin: auto;
+	margin-top: 15px;
+	width: 95%;
+}
+
+div.info-container {
+	height: auto;
+	width: 95%;
+	padding: 10px;
+	max-height: 250px;
+	overflow-y: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
 #proceed {
 	display: block;
 	margin: auto;
@@ -185,9 +229,53 @@ div.card-wrapper {
 	clear: both;
 }
 
+#function-information-adder {
+	position: fixed;
+	top: 0; left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgb(0, 0, 0, 0.5);
+	z-index: 1;
+	display: none;
+}
+
+#close-panel {
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: white;
+	background-color: transparent;
+	border: 1px solid white;
+	transition: 1s;
+}
+
+#close-panel:hover {
+	background-color: white;
+	color: black;
+}
+
+#goback-panel {
+	border: 1px solid white;
+	background-color: transparent;
+	transition: 1s;
+}
+
+#goback-panel:hover {
+	background-color: white;
+	color: black;
+}
+
 #proceed:hover {
 	background-color: white;
 	color: black;
 	padding-left: 30px;
 	padding-right: 30px;
+}
+
+.color-button-basic {
+	background-color: rgb(4, 85, 89);
+}
+
+.color-button-advanced {
+	background-color: var(--advanced-color);
 }

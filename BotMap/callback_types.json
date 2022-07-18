@@ -1,32 +1,48 @@
 {
   "echo": {
     "type": "basic",
-	"active": true,
-	"description": ""
+    "active": true,
+    "description": "A basic command that echoes back the provided message. By Hubert F. Espinola I",
+    "commands": [
+        "/echo"
+	],
+    "help": [
+        "Echos the word passed on the argument (example usage: /echo <words, statement>)."
+	]
   },
   "ban": {
     "type": "basic",
-	"active": false,
-	"description": ""
+    "active": false,
+    "description": "",
+    "commands": [],
+    "help": []
   },
   "ping": {
     "type": "basic",
-	"active": false,
-	"description": ""
+    "active": false,
+    "description": "",
+    "commands": [],
+    "help": []
   },
   "schedule": {
     "type": "basic",
-	"active": false,
-	"description": ""
+    "active": false,
+    "description": "",
+    "commands": [],
+    "help": []
   },
   "msglog": {
     "type": "advanced",
-	"active": false,
-	"description": ""
+    "active": false,
+    "description": "",
+    "commands": [],
+    "help": []
   },
   "fltword": {
     "type": "advanced",
-	"active": false,
-	"description": ""
+    "active": false,
+    "description": "",
+    "commands": [],
+    "help": []
   }
 }

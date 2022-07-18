@@ -57,7 +57,6 @@
 			<p class="justify-text normalized-size">
 				This part contains basic bot functionalities such as echo, ban, schedule, and so on.
 				Simply select the card and choose which of the bots will receive the functionality.
-				To know what the command can do, right click the card to see description.
 			</p>
 
 			<!-- These cards will be retrieved now from the server -->
@@ -89,6 +88,25 @@
 		</div>
 		<div class="max-width breaker"></div>
 
+		<section id="function-information-adder">
+			<div class="color-button-basic function-info" id="bg-container">
+				<h1 class="center-text" id="func-title">echo</h1>
+
+				<div id="specific-container">
+					<div class="specific-info center" id="description">Description</div>
+					<div class="specific-info center" id="commands">Commands</div>
+					<div class="specific-info center" id="add">Add to Bot</div>
+				</div>
+
+				<div class="info-container" id="info-container" hidden>
+					<b id="second-title"></b>
+					<p id="text-content" class="justify-text"></p>
+					<br/>
+					<button id="goback-panel">Go Back</button>
+				</div>
+				<div class="close-container"><button id="close-panel">Close</button></div>
+			</div>
+		</section>
 	</main>
 
 	<footer>Copyright © HueHueberry 2022</footer>
