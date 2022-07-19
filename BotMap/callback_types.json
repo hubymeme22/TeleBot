@@ -7,7 +7,7 @@
         "/echo"
 	],
     "help": [
-        "Echos the word passed on the argument (example usage: /echo <words, statement>)."
+        "Echos the word passed on the argument (example usage: /echo [words, statement])."
 	]
   },
   "ban": {

@@ -4,6 +4,7 @@
 let functionality_flag = 'echo';
 let functionality_type = 'basic';
 
+// Adds the "basic" functionality cards
 function addBasic(title, callback_type_data) {
 	const basic_container = document.getElementById('basic-container');
 	const html_code = `
@@ -33,6 +34,7 @@ function addBasic(title, callback_type_data) {
 	}, 100);
 }
 
+// Adds the "advanced" functionality cards
 function addAdvanced(title, callback_type_data) {
 	const advanced_container = document.getElementById('advanced-container');
 	const html_code = `
@@ -79,9 +81,11 @@ function addContribution(title, callback_type_data) {
 	}, 300);
 }
 
+// resets the card preview to its original state
 function resetInnerBox() {
 	const specific_container = document.getElementById('specific-container');
 	const container = document.getElementById('info-container');
+	const bot_info_container = document.getElementById('bot-info-container');
 	
 	specific_container.classList.remove('fade-out');
 	specific_container.classList.add('fade-in');
@@ -90,10 +94,45 @@ function resetInnerBox() {
 	container.classList.add('fade-out');
 
 	container.hidden = true;
+	bot_info_container.hidden = true;
 	specific_container.hidden = false;
 
 	document.getElementById('second-title').innerText = '';
 	document.getElementById('text-content').innerText = '';
+}
+
+// adds all the bots name and highlights the bot with the specified function
+function addFuncList(bot_name, function_name) {
+	const container = document.getElementById('add-bot-here');
+	const button = document.createElement('button');
+
+	// this means that this bot already has this functionality
+	if (bot_list[bot_name].functionalities.indexOf(function_name) != -1)
+		button.classList.add('list-selected');
+	
+	button.classList.add('bot-check');
+	button.innerText = bot_name;
+	button.onclick = () => {
+		console.log(bot_list[bot_name].functionalities);
+
+		if (bot_list[bot_name].functionalities.indexOf(function_name) == -1) {
+			button.classList.add('list-selected');
+			bot_list[bot_name].functionalities.push(function_name);
+		} else {
+			button.classList.remove('list-selected');
+			bot_list[bot_name].functionalities.pop(function_name);
+		}
+
+	};
+	container.appendChild(button);
+}
+
+// loads the bot's functionality status on each card
+function loadFunctionalityData() {
+	const bot_names = Object.keys(bot_list);
+	bot_names.forEach(bot => {
+		addFuncList(bot, functionality_flag);
+	});
 }
 
 ////////////////////////////////////////
@@ -210,6 +249,29 @@ commands.onclick = () => {
 		container.hidden = false;
 		specific_container.hidden = true;
 	}, 1000);
+};
+
+add.onclick = () => {
+	// resets the bot list and re-loads again
+	document.getElementById('add-bot-here').innerHTML = '';
+	loadFunctionalityData();
+
+	// fade out the other
+	const container = document.getElementById('info-container');
+	const specific_container = document.getElementById('specific-container');
+
+	specific_container.classList.remove('fade-in');
+	specific_container.classList.add('fade-out');
+	container.classList.remove('fade-in');
+	container.classList.add('fade-out');
+
+	specific_container.hidden = true;
+
+	// fades in the list now
+	const bot_info_container = document.getElementById('bot-info-container');
+	bot_info_container.classList.remove('fade-out');
+	bot_info_container.classList.add('fade-in');
+	bot_info_container.hidden = false;
 };
 
 const goBack = document.getElementById('goback-panel');

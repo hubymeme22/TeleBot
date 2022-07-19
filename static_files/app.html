@@ -92,17 +92,28 @@
 			<div class="color-button-basic function-info" id="bg-container">
 				<h1 class="center-text" id="func-title">echo</h1>
 
+				<!-- Expands bot information -->
 				<div id="specific-container">
 					<div class="specific-info center" id="description">Description</div>
 					<div class="specific-info center" id="commands">Commands</div>
 					<div class="specific-info center" id="add">Add to Bot</div>
 				</div>
 
+				<!-- Here's where the information will be added -->
 				<div class="info-container" id="info-container" hidden>
 					<b id="second-title"></b>
 					<p id="text-content" class="justify-text"></p>
 					<br/>
 					<button id="goback-panel">Go Back</button>
+				</div>
+
+				<!-- Separated bot list -->
+				<div class="bot-info-container" id="bot-info-container" hidden>
+					<b>Add to ff. bot/s</b>
+					<p class="justify-text">Following are the bots you can add these functions (Selecting the bot again will deselect the bot):</p>
+					<div id="add-bot-here">
+						<button class="bot-check">Bot_name</button>
+					</div>
 				</div>
 				<div class="close-container"><button id="close-panel">Close</button></div>
 			</div>
