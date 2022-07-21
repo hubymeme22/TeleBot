@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 ///////////////////////////
 // Bot Handling Requests //
 ///////////////////////////
-const TGFunctions = require('./bot-handler');
+const TGFunctions = require('./TGFunctions');
 
 // for checking if the token is good
 app.get('/check_token/:token', (req, res) => {
@@ -36,6 +36,18 @@ app.get('/run/:nickname', (req, res) => {
 	res.send(response);
 });
 
+// for stopping bot
+app.get('/stop/:nickname', (req, res) => {
+	const nickname = req.params.nickname;
+	const token = TGFunctions.findToken(nickname);
+
+	const isStopped = TGFunctions.stopBot(token);
+	if (isStopped)
+		res.send({code : 'ok'});
+	else
+		res.send({code : 'failed'});
+});
+
 // for getting all the user's current bot
 app.get('/bot_list', (req, res) => {
 	const list = require('./BotMap/bot_map.json');
@@ -49,8 +61,9 @@ app.get('/function_list', (req, res) => {
 });
 
 // for removing a specific function from the bot
-app.get('/remove_function/:token/:function_name', (req, res) => {
-	const token = req.params.token;
+app.get('/remove_function/:nickname/:function_name', (req, res) => {
+	const nickname = req.params.nickname;
+	const token = TGFunctions.findToken(nickname);
 	const fname = req.params.function_name;
 
 	const response = TGFunctions.removeFunction(token, fname);
@@ -77,9 +90,10 @@ app.post('/set_function/:token', (req, res) => {
 });
 
 // for adding bot function
-app.post('/add_function/:token', (req, res) => {
-	const token = req.params.token;
-	const bot_func = req.body;
+app.post('/add_function/:nickname', (req, res) => {
+	const nickname = req.params.nickname;
+	const token = TGFunctions.findToken(nickname);
+	const bot_func = req.body.function_name;
 
 	const response = TGFunctions.addFunction(token, bot_func);
 	res.send(response);

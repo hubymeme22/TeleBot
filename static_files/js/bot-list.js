@@ -62,15 +62,25 @@ function addBot(nickname, statusJSONData) {
 			const botStatus = cardList[botID]['info'][1].status;
 			console.log(botStatus);
 			if (botStatus === 'open') {
-				cardList[botID]['start'].classList.remove('start-info-button-started');
-				cardList[botID]['start'].classList.add('start-info-button');
-				cardList[botID]['info'][1].status = 'close';
+				console.log('this called')
+				packedRequest_GET(window.location.origin + `/stop/${nickname}`, (type, resp) => {
+					if (type != 'response')
+						return;
+
+					// change color to red
+					if (resp.code == 'ok') {
+						cardList[botID]['start'].classList.remove('start-info-button-started');
+						cardList[botID]['start'].classList.add('start-info-button');
+						cardList[botID]['info'][1].status = 'close';
+					}
+				});
 			} else {
 				packedRequest_GET(window.location.origin + `/run/${nickname}`, (type, response) => {
 					if (type != 'response')
 						return;
 
 					// change the color to green if the bot is confirmed running
+					console.log(response);
 					if (response[0] == 'r_log') {
 						cardList[botID]['start'].classList.add('start-info-button-started');
 						cardList[botID]['start'].classList.remove('start-info-button');

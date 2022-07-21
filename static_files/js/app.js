@@ -111,13 +111,32 @@ function addFuncList(bot_name, function_name) {
 		button.classList.add('list-selected');
 	
 	button.classList.add('bot-check');
-	button.innerText = bot_name;
+	button.innerText = bot_list[bot_name].info.result.username;
 	button.onclick = () => {
 		console.log(bot_list[bot_name].functionalities);
 
 		if (bot_list[bot_name].functionalities.indexOf(function_name) == -1) {
-			button.classList.add('list-selected');
-			bot_list[bot_name].functionalities.push(function_name);
+			packedRequest_POST(window.location.origin + `/add_function/${bot_list[bot_name].info.result.username}`, {'function_name': function_name}, (type, resp) => {
+				if (type != 'response')
+					return;
+
+				switch (resp.code) {
+					case 'nonexistent_bot':
+						alert('The bot does not exist!');
+						break;
+					case 'bot_not_started':
+						alert('Please make sure that your bot is online');
+						break;
+					case false:
+						alert('You used a non-existent functionality');
+						break;
+					default:
+						button.classList.add('list-selected');
+						bot_list[bot_name].functionalities.push(function_name);
+						console.log('functionality added!');
+						break;
+				}
+			});
 		} else {
 			button.classList.remove('list-selected');
 			bot_list[bot_name].functionalities.pop(function_name);
@@ -131,7 +150,8 @@ function addFuncList(bot_name, function_name) {
 function loadFunctionalityData() {
 	const bot_names = Object.keys(bot_list);
 	bot_names.forEach(bot => {
-		addFuncList(bot, functionality_flag);
+		if (bot != 'sample_bot_token')
+			addFuncList(bot, functionality_flag);
 	});
 }
 
