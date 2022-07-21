@@ -27,8 +27,9 @@ app.get('/check_token/:token', (req, res) => {
 });
 
 // for running a specific bot
-app.get('/run/:token', (req, res) => {
-	const token = req.params.token;
+app.get('/run/:nickname', (req, res) => {
+	const nickname = req.params.nickname;
+	const token = TGFunctions.findToken(nickname);
 
 	// run this token
 	const response = TGFunctions.startBot(token);
@@ -45,6 +46,15 @@ app.get('/bot_list', (req, res) => {
 app.get('/function_list', (req, res) => {
 	const callback_types = require('./BotMap/callback_types.json');
 	res.send(callback_types);
+});
+
+// for removing a specific function from the bot
+app.get('/remove_function/:token/:function_name', (req, res) => {
+	const token = req.params.token;
+	const fname = req.params.function_name;
+
+	const response = TGFunctions.removeFunction(token, fname);
+	res.send(response);
 });
 
 // for adding the bot on the list of user
