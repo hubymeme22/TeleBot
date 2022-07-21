@@ -31,6 +31,23 @@ class BotHandler {
 		return false;
 	}
 
+	removeFunction(keyword='') {
+		if (CallbackMap[keyword] != undefined) {
+			const module = require(`./BotMap/${CallbackMap[item]}`);
+			this.unloadModule(module);
+			return true;
+		}
+
+		return false;
+	}
+
+	unloadModule(module) {
+		let commands = Object.keys(module);
+		module.forEach(items => {
+			this.botObj.removeTextListener(new RegExp(`/${items} (.+)`));
+		});
+	}
+
 	startBot() {
 		this.callbacks.forEach((item) => {
 
@@ -109,7 +126,23 @@ function addFunction(token, function_name) {
 	return botInstanceMap[token].useFunction(function_name);
 }
 
-// sets the bot's function
+// removes the added function
+function removeFunction(token, function_name) {
+	// check if the bot is runnning
+	if (botInstanceMap[token] == undefined)
+		return {status: 'not_running'};
+
+	// check if the function is installed in this bot
+	const botFunctionalities = BotList[token].functionalities;
+	if (botFunctionalities.indexOf(function_name) == -1)
+		return {status: 'not_added_function'};
+
+	// remove the bot's functionality
+	botInstanceMap[token].removeFunction(function_name);
+	return {status: 'removed'};
+}
+
+// sets the bot's function/s
 function setFunction(token, func_arr=[]) {
 	if (BotList[token] != null || BotList[token] != undefined) {
 		BotList[token].functionalities = func_arr;
@@ -117,6 +150,24 @@ function setFunction(token, func_arr=[]) {
 	}
 
 	return 'used_token';
+}
+
+// finds token by username/nickname of the bot
+function findTokenByUsername(username='') {
+	let token = undefined;
+
+	// will fix this to break out of loop soon ;__;
+	Object.entries(BotList).map(item => {
+		if (item[1].info.result != undefined) {
+			const bot_username = item[1].info.result.username;
+			if (bot_username === username) {
+				token = item[0];
+				return;
+			}
+		}
+	});
+
+	return token;
 }
 
 // for running the bot and executing functions
@@ -137,22 +188,35 @@ function startBot(token) {
 	bot_functions.forEach((item) => {
 		// check item string and
 		// bot_instance add_function: item
-		const status = BotInstance.addFunction(item);
+		const status = botInstanceMap[token].addFunction(item);
 		run_log.push(status);
 	});
 
 	// run bot_instance
 	botInstanceMap[token].startBot();
-	botInstanceMap[token].status = 'open';
+	BotList[token].status = 'open';
 	updateList();
 
 	return run_log;
 }
 
+// for loading the running previous bots
+function loadRunningBots() {
+	Object.entries(BotList).map(item => {
+		if (item[1].status == 'open' && item[0] != 'sample_bot_token') {
+			console.log('[Bot continuous load] Status open for ' + item[0]);
+			startBot(item[0]);
+		}
+	});
+}
+
+loadRunningBots();
 module.exports = {
 	'checkBot' : checkBot,
 	'addToken' : addToken,
 	'setFunction' : setFunction,
 	'addFunction' : addFunction,
-	'startBot' : startBot
+	'startBot' : startBot,
+	'removeFunction' : removeFunction,
+	'findToken' : findTokenByUsername
 };
