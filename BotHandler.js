@@ -9,8 +9,7 @@ class BotHandler {
 
 		callback_list.forEach((keyword) => {
 			console.log(`Using function : ${keyword}`);
-			const module = require(`./BotMap/${CallbackMap[keyword]}`);
-			this.useFunction(module);
+			this.useFunction(keyword);
 		});
 	}
 
