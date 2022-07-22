@@ -138,8 +138,17 @@ function addFuncList(bot_name, function_name) {
 				}
 			});
 		} else {
-			button.classList.remove('list-selected');
-			bot_list[bot_name].functionalities.pop(function_name);
+
+			packedRequest_GET(window.location.origin + `/remove_function/${bot_list[bot_name].info.result.username}/${function_name}`, (type, resp) => {
+				if (type != 'response') return;
+
+				console.log(resp);
+				if (resp.status == 'removed') {
+					button.classList.remove('list-selected');
+					bot_list[bot_name].functionalities.pop(function_name);
+				}
+			});
+
 		}
 
 	};
