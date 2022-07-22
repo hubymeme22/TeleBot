@@ -74,17 +74,19 @@ function addFunction(token, function_name) {
 
 // removes the added function
 function removeFunction(token, function_name) {
-	// check if the bot is runnning
-	if (botInstanceMap[token] == undefined)
-		return {status: 'not_running'};
-
 	// check if the function is installed in this bot
 	const botFunctionalities = BotList[token].functionalities;
 	if (botFunctionalities.indexOf(function_name) == -1)
 		return {status: 'not_added_function'};
 
 	// remove the bot's functionality
-	botInstanceMap[token].removeFunction(function_name);
+	BotList[token].functionalities.pop(function_name);
+	updateList();
+
+	// check if the bot is runnning
+	if (botInstanceMap[token] != undefined)
+		botInstanceMap[token].removeFunction(function_name);
+
 	return {status: 'removed'};
 }
 
