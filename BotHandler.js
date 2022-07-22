@@ -26,7 +26,7 @@ class BotHandler {
 
 	removeFunction(keyword='') {
 		if (CallbackMap[keyword] != undefined) {
-			const module = require(`./BotMap/${CallbackMap[item]}`);
+			const module = require(`./BotMap/${CallbackMap[keyword]}`);
 			this.unloadModule(module);
 			return true;
 		}
@@ -36,7 +36,7 @@ class BotHandler {
 
 	unloadModule(module) {
 		let commands = Object.keys(module);
-		module.forEach(items => {
+		commands.forEach(items => {
 			this.botObj.removeTextListener(new RegExp(`/${items} (.+)`));
 		});
 	}
