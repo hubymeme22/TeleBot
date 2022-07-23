@@ -265,7 +265,7 @@ commands.onclick = () => {
 	setTimeout(() => {
 		let command_format = '<ul>';
 		func_details.commands.forEach((value, index) => {
-			command_format += `<li>${value} - ${func_details.help[index]}</li>`;
+			command_format += `<li class="mono-text">${value} - ${func_details.help[index]}</li>`;
 		}); command_format += '</ul>';
 
 		document.getElementById('second-title').innerText = 'Commands';
