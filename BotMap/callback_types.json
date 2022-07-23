@@ -13,9 +13,13 @@
   "ban": {
     "type": "basic",
     "active": false,
-    "description": "",
-    "commands": [],
-    "help": []
+    "description": "A simple command that bans a specific word passed to the argument. By doing so, the user can either be banned or warned depending on the conditions added by the owner.",
+    "commands": [
+		"/ban"
+	],
+    "help": [
+		"Bans a specific word. (example usage: /ban [word, statement])"
+	]
   },
   "ping": {
     "type": "basic",
