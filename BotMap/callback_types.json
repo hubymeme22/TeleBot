@@ -15,10 +15,12 @@
     "active": false,
     "description": "A simple command that bans a specific word passed to the argument. By doing so, the user can either be banned or warned depending on the conditions added by the owner.",
     "commands": [
-		"/ban"
+		"/ban",
+		"/unban"
 	],
     "help": [
-		"Bans a specific word. (example usage: /ban [word, statement])"
+		"Bans a specific word. (example usage: /ban [word])",
+		"Un-bans the word you banned. (example usage: /unban [word])"
 	]
   },
   "ping": {
